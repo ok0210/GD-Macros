@@ -19,7 +19,7 @@
         }
 
         /* --- Layout --- */
-        .container { width: 100%; max-width: 500px; }
+        .container { width: 100%; max-width: 900px; } /* Widened for side-by-side */
         .header-area { 
             display: flex; 
             justify-content: space-between; 
@@ -28,9 +28,7 @@
         }
 
         /* --- Search Bar --- */
-        .search-container {
-            margin-bottom: 25px;
-        }
+        .search-container { margin-bottom: 25px; }
         #macroSearch {
             width: 100%;
             padding: 12px 15px;
@@ -44,38 +42,33 @@
         }
         #macroSearch:focus { border-color: #00ffaa; }
 
-        /* --- Typography --- */
-        h1 {
-            color: #00ffaa;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0;
-            font-size: 1.5rem;
-        }
+        h1 { color: #00ffaa; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-size: 1.5rem; }
         h2 { margin: 0 0 15px 0; color: #fff; font-size: 1.2rem; }
 
-        /* --- Components --- */
-        .macro-list, .request-box {
-            background: #16161a;
-            border: 1px solid #333;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
-            margin-bottom: 30px;
+        /* --- Grid Component (The "Side-by-Side" fix) --- */
+        .macro-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
             list-style: none;
             padding: 0;
-            overflow: hidden;
+            margin-bottom: 30px;
         }
 
         .item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: #16161a;
+            border: 1px solid #333;
+            border-radius: 12px;
             padding: 20px;
-            border-bottom: 1px solid #25252b;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease;
         }
-        .item:last-child { border-bottom: none; }
+        .item:hover { transform: translateY(-5px); border-color: #444; }
 
-        .file-info b { display: block; color: #fff; font-size: 1.1rem; }
+        .file-info { margin-bottom: 15px; }
+        .file-info b { display: block; color: #fff; font-size: 1.1rem; margin-bottom: 4px; }
         .file-info span { font-size: 0.75rem; color: #6b6b76; text-transform: uppercase; }
 
         /* Buttons */
@@ -87,22 +80,24 @@
             border-radius: 6px;
             font-weight: bold;
             font-size: 0.85rem;
-            border: none;
-            cursor: pointer;
+            text-align: center;
             transition: all 0.2s ease;
-            display: inline-block;
         }
-        .btn:hover { background: #00cc88; transform: translateY(-1px); }
+        .btn:hover { background: #00cc88; }
         
         .btn-request-top {
             background: transparent;
             border: 1px solid #00ffaa;
             color: #00ffaa;
         }
-        .btn-request-top:hover { background: #00ffaa; color: #000; }
 
         /* Forms */
-        .request-box { padding: 25px; }
+        .request-box { 
+            background: #16161a; 
+            border: 1px solid #333; 
+            border-radius: 12px; 
+            padding: 25px; 
+        }
         label { display: block; margin-top: 15px; margin-bottom: 5px; font-size: 0.85rem; color: #aaa; }
         input {
             width: 100%;
@@ -111,13 +106,11 @@
             border: 1px solid #333;
             border-radius: 6px;
             color: white;
-            font-family: inherit;
         }
-        input:focus { border-color: #00ffaa; outline: none; }
-        .submit-btn { width: 100%; margin-top: 25px; }
+        .submit-btn { width: 100%; margin-top: 25px; cursor: pointer; border: none; }
 
-        /* No results message */
         #noResults {
+            grid-column: 1 / -1;
             display: none;
             padding: 20px;
             text-align: center;
@@ -134,45 +127,45 @@
         </header>
 
         <div class="search-container">
-            <input type="text" id="macroSearch" placeholder="Search macros...">
+            <input type="text" id="macroSearch" placeholder="Search levels or creators...">
         </div>
 
         <ul class="macro-list" id="macroList">
             <li class="item">
-                <div class="file-info"><b>Tidal Wave (alpaca9)</b><span>Tidal Wave.gdr2</span></div>
-                <a href="Tidal%20Wave.gdr2" download class="btn">Download</a>
-            </li>
-            <li class="item">
-                <div class="file-info"><b>Bloodbath (alpaca9)</b><span>Bloodbath.gdr2</span></div>
-                <a href="Bloodbath.gdr2" download class="btn">Download</a>
-            </li>
-            <li class="item">
-                <div class="file-info"><b>Sakupen Circles (alpaca9)</b><span>Sakupen Circles.gdr2</span></div>
-                <a href="Sakupen%20Circles.gdr2" download class="btn">Download</a>
-            </li>
-            <li class="item">
-                <div class="file-info"><b>Tartarus (bloliver)</b><span>Tartarus.gdr2</span></div>
-                <a href="Tartarus.gdr2" download class="btn">Download</a>
-            </li>
-            <li class="item">
-                <div class="file-info"><b>Slaughterhouse (bloliver)</b><span>Slaughterhouse.gdr2</span></div>
-                <a href="Slaughterhouse.gdr2" download class="btn">Download</a>
-            </li>
-            <li class="item">
-                <div class="file-info"><b>Amethyst (bloliver)</b><span>Amethyst.gdr2</span></div>
-                <a href="Amethyst.gdr2" download class="btn">Download</a>
-            </li>
-            <li class="item">
-                <div class="file-info"><b>Retray (alpaca9)</b><span>Retray.gdr2</span></div>
+                <div class="file-info"><b>Retray (alpaca9)</b><span>Easy</span></div>
                 <a href="Retray.gdr2" download class="btn">Download</a>
             </li>
             <li class="item">
-                <div class="file-info"><b>Acheron (alpaca9)</b><span>Acheron.gdr2</span></div>
+                <div class="file-info"><b>Bloodbath (alpaca9)</b><span>Extreme Demon</span></div>
+                <a href="Bloodbath.gdr2" download class="btn">Download</a>
+            </li>
+            <li class="item">
+                <div class="file-info"><b>Bloodlust (alpaca9)</b><span>Extreme Demon</span></div>
+                <a href="Bloodlust.gdr2" download class="btn">Download</a>
+            </li>
+            <li class="item">
+                <div class="file-info"><b>Sakupen Circles (alpaca9)</b><span>Extreme Demon</span></div>
+                <a href="Sakupen%20Circles.gdr2" download class="btn">Download</a>
+            </li>
+            <li class="item">
+                <div class="file-info"><b>Tartarus (bloliver)</b><span>Extreme Demon</span></div>
+                <a href="Tartarus.gdr2" download class="btn">Download</a>
+            </li>
+            <li class="item">
+                <div class="file-info"><b>Slaughterhouse (bloliver)</b><span>Extreme Demon</span></div>
+                <a href="Slaughterhouse.gdr2" download class="btn">Download</a>
+            </li>
+             <li class="item">
+                <div class="file-info"><b>Amethyst (bloliver)</b><span>Extreme Demon</span></div>
+                <a href="Amethyst.gdr2" download class="btn">Download</a>
+            </li>
+            <li class="item">
+                <div class="file-info"><b>Acheron (alpaca9)</b><span>Extreme Demon</span></div>
                 <a href="Acheron.gdr2" download class="btn">Download</a>
             </li>
             <li class="item">
-                <div class="file-info"><b>Bloodlust (alpaca9)</b><span>Bloodlust.gdr2</span></div>
-                <a href="Bloodlust.gdr2" download class="btn">Download</a>
+                <div class="file-info"><b>Tidal Wave (alpaca9)</b><span>Top 1 Extreme</span></div>
+                <a href="Tidal%20Wave.gdr2" download class="btn">Download</a>
             </li>
             <div id="noResults">No macros match your search.</div>
         </ul>
@@ -181,7 +174,7 @@
             <h2>Request a New Macro</h2>
             <form action="https://formspree.io/f/maqlqrov" method="POST">
                 <label for="level_request">Level Name</label>
-                <input type="text" id="level_request" name="level_request" placeholder="e.g. Acheron" required>
+                <input type="text" id="level_request" name="level_request" placeholder="e.g. Firework" required>
                 
                 <label for="email">Your Email (Optional)</label>
                 <input type="email" id="email" name="email" placeholder="So I can notify you">
