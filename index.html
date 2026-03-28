@@ -25,12 +25,13 @@
             letter-spacing: 2px;
             margin-bottom: 30px;
         }
-        .macro-list {
+        .macro-list, .request-box {
             background: #16161a;
             border: 1px solid #333;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+            margin-bottom: 30px;
         }
         .item {
             display: flex;
@@ -38,11 +39,8 @@
             align-items: center;
             padding: 20px;
             border-bottom: 1px solid #25252b;
-            transition: background 0.2s;
         }
-        .item:hover { background: #1c1c22; }
         .item:last-child { border-bottom: none; }
-        
         .file-info b { display: block; color: #fff; font-size: 1.1rem; }
         .file-info span { font-size: 0.75rem; color: #6b6b76; text-transform: uppercase; }
 
@@ -50,50 +48,72 @@
             background: #00ffaa;
             color: #000;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 6px;
             font-weight: bold;
             font-size: 0.85rem;
-            transition: transform 0.1s;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
         }
-        .btn:hover { 
-            background: #00cc88; 
-            transform: scale(1.05);
+        .btn:hover { background: #00cc88; transform: translateY(-1px); }
+        .btn:active { transform: translateY(0); }
+
+        /* Request Form Styles */
+        .request-box { padding: 25px; }
+        .request-box h2 { margin-top: 0; color: #fff; font-size: 1.2rem; }
+        label { display: block; margin-top: 15px; font-size: 0.85rem; color: #aaa; }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            background: #0a0a0c;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: white;
+            box-sizing: border-box;
+            font-family: inherit;
         }
-        .btn:active { transform: scale(0.95); }
+        input:focus, textarea:focus { border-color: #00ffaa; outline: none; }
+        .submit-btn {
+            width: 100%;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Macro Downloads</h1>
+
         <div class="macro-list">
-            
             <div class="item">
-                <div class="file-info">
-                    <b>Tidal Wave</b>
-                    <span>tidal wave.gdr2</span>
-                </div>
+                <div class="file-info"><b>Tidal Wave</b><span>tidal wave.gdr2</span></div>
                 <a href="tidal wave.gdr2" download class="btn">Download</a>
             </div>
-
             <div class="item">
-                <div class="file-info">
-                    <b>Bloodbath</b>
-                    <span>bloodbath.gdr2</span>
-                </div>
+                <div class="file-info"><b>Bloodbath</b><span>bloodbath.gdr2</span></div>
                 <a href="bloodbath.gdr2" download class="btn">Download</a>
             </div>
-
             <div class="item">
-                <div class="file-info">
-                    <b>Sakupen Circles</b>
-                    <span>sakupen circles.gdr2</span>
-                </div>
+                <div class="file-info"><b>Sakupen Circles</b><span>sakupen circles.gdr2</span></div>
                 <a href="sakupen circles.gdr2" download class="btn">Download</a>
             </div>
-
         </div>
+
+        <div class="request-box">
+            <h2>Request a Macro</h2>
+            <form action="https://formspree.io/f/maqlqrov" method="POST">
+                <label>Which level do you want?</label>
+                <input type="text" name="level_request" placeholder="e.g. Acheron" required>
+                
+                <label>Your Email (Optional):</label>
+                <input type="email" name="email" placeholder="so I can send it to you">
+                
+                <button type="submit" class="btn submit-btn">Send Request</button>
+            </form>
+        </div>
+
     </div>
 
 </body>
