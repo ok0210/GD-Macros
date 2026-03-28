@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Macro Downloads</title>
     <style>
+        /* Smooth scrolling for the request button */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
             background-color: #0a0a0c;
@@ -18,12 +22,18 @@
             width: 100%;
             max-width: 500px;
         }
+        .header-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
         h1 { 
-            text-align: center; 
             color: #00ffaa; 
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 30px;
+            margin: 0;
+            font-size: 1.5rem;
         }
         .macro-list, .request-box {
             background: #16161a;
@@ -44,6 +54,7 @@
         .file-info b { display: block; color: #fff; font-size: 1.1rem; }
         .file-info span { font-size: 0.75rem; color: #6b6b76; text-transform: uppercase; }
 
+        /* Button Styles */
         .btn {
             background: #00ffaa;
             color: #000;
@@ -55,15 +66,24 @@
             border: none;
             cursor: pointer;
             transition: background 0.2s, transform 0.1s;
+            display: inline-block;
         }
         .btn:hover { background: #00cc88; transform: translateY(-1px); }
-        .btn:active { transform: translateY(0); }
+        .btn-request-top {
+            background: transparent;
+            border: 1px solid #00ffaa;
+            color: #00ffaa;
+        }
+        .btn-request-top:hover {
+            background: #00ffaa;
+            color: #000;
+        }
 
         /* Request Form Styles */
         .request-box { padding: 25px; }
         .request-box h2 { margin-top: 0; color: #fff; font-size: 1.2rem; }
         label { display: block; margin-top: 15px; font-size: 0.85rem; color: #aaa; }
-        input, textarea {
+        input {
             width: 100%;
             padding: 12px;
             margin-top: 5px;
@@ -72,9 +92,8 @@
             border-radius: 6px;
             color: white;
             box-sizing: border-box;
-            font-family: inherit;
         }
-        input:focus, textarea:focus { border-color: #00ffaa; outline: none; }
+        input:focus { border-color: #00ffaa; outline: none; }
         .submit-btn {
             width: 100%;
             margin-top: 20px;
@@ -84,7 +103,10 @@
 <body>
 
     <div class="container">
-        <h1>Macro Downloads</h1>
+        <div class="header-area">
+            <h1>Macro Downloads</h1>
+            <a href="#request-form" class="btn btn-request-top">Request +</a>
+        </div>
 
         <div class="macro-list">
             <div class="item">
@@ -101,14 +123,14 @@
             </div>
         </div>
 
-        <div class="request-box">
-            <h2>Request a Macro</h2>
+        <div class="request-box" id="request-form">
+            <h2>Request a New Macro</h2>
             <form action="https://formspree.io/f/maqlqrov" method="POST">
-                <label>Which level do you want?</label>
+                <label>Level Name</label>
                 <input type="text" name="level_request" placeholder="e.g. Acheron" required>
                 
-                <label>Your Email (Optional):</label>
-                <input type="email" name="email" placeholder="so I can send it to you">
+                <label>Your Email (Optional)</label>
+                <input type="email" name="email" placeholder="So I can notify you">
                 
                 <button type="submit" class="btn submit-btn">Send Request</button>
             </form>
