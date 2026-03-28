@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Macro Downloads</title>
     <style>
-        /* CSS remains the same as previous clean version */
         *, *::before, *::after { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -65,6 +64,8 @@
             border-radius: 6px;
             color: white;
             font-family: inherit;
+            /* Forces the text to look lowercase as they type */
+            text-transform: lowercase;
         }
         input:focus { border-color: #00ffaa; outline: none; }
         .submit-btn { width: 100%; margin-top: 20px; }
@@ -81,19 +82,27 @@
         <ul class="macro-list">
             <li class="item">
                 <div class="file-info"><b>Tidal Wave (alpaca9)</b><span>tidal wave.gdr2</span></div>
-                <a href="tidal%20wave.gdr2" download="tidal wave.gdr2" class="btn">Download</a>
+                <a href="tidal%20wave.gdr2" download class="btn">Download</a>
             </li>
             <li class="item">
                 <div class="file-info"><b>Bloodbath (alpaca9)</b><span>bloodbath.gdr2</span></div>
-                <a href="bloodbath.gdr2" download="bloodbath.gdr2" class="btn">Download</a>
+                <a href="bloodbath.gdr2" download class="btn">Download</a>
             </li>
             <li class="item">
                 <div class="file-info"><b>Sakupen Circles (alpaca9)</b><span>sakupen circles.gdr2</span></div>
-                <a href="sakupen%20circles.gdr2" download="sakupen circles.gdr2" class="btn">Download</a>
+                <a href="sakupen%20circles.gdr2" download class="btn">Download</a>
             </li>
             <li class="item">
                 <div class="file-info"><b>Tartarus (bloliver)</b><span>tartarus.gdr2</span></div>
-                <a href="tartarus.gdr2" download="tartarus.gdr2" class="btn">Download</a>
+                <a href="tartarus.gdr2" download class="btn">Download</a>
+            </li>
+            <li class="item">
+                <div class="file-info"><b>Slaughterhouse (bloliver)</b><span>slaughterhouse.gdr2</span></div>
+                <a href="slaughterhouse.gdr2" download class="btn">Download</a>
+            </li>
+            <li class="item">
+                <div class="file-info"><b>Amethyst (bloliver)</b><span>amethyst.gdr2</span></div>
+                <a href="amethyst.gdr2" download class="btn">Download</a>
             </li>
         </ul>
 
