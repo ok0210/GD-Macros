@@ -24,8 +24,25 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            margin-bottom: 30px; 
+            margin-bottom: 20px; 
         }
+
+        /* --- Search Bar --- */
+        .search-container {
+            margin-bottom: 25px;
+        }
+        #macroSearch {
+            width: 100%;
+            padding: 12px 15px;
+            background: #16161a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        #macroSearch:focus { border-color: #00ffaa; }
 
         /* --- Typography --- */
         h1 {
@@ -46,6 +63,7 @@
             margin-bottom: 30px;
             list-style: none;
             padding: 0;
+            overflow: hidden;
         }
 
         .item {
@@ -97,6 +115,14 @@
         }
         input:focus { border-color: #00ffaa; outline: none; }
         .submit-btn { width: 100%; margin-top: 25px; }
+
+        /* No results message */
+        #noResults {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            color: #6b6b76;
+        }
     </style>
 </head>
 <body>
@@ -107,7 +133,11 @@
             <a href="#request-form" class="btn btn-request-top">Request +</a>
         </header>
 
-        <ul class="macro-list">
+        <div class="search-container">
+            <input type="text" id="macroSearch" placeholder="Search macros...">
+        </div>
+
+        <ul class="macro-list" id="macroList">
             <li class="item">
                 <div class="file-info"><b>Tidal Wave (alpaca9)</b><span>Tidal Wave.gdr2</span></div>
                 <a href="Tidal%20Wave.gdr2" download class="btn">Download</a>
@@ -118,7 +148,7 @@
             </li>
             <li class="item">
                 <div class="file-info"><b>Sakupen Circles (alpaca9)</b><span>Sakupen Circles.gdr2</span></div>
-                <a href="Sakupen Circles.gdr2" download class="btn">Download</a>
+                <a href="Sakupen%20Circles.gdr2" download class="btn">Download</a>
             </li>
             <li class="item">
                 <div class="file-info"><b>Tartarus (bloliver)</b><span>Tartarus.gdr2</span></div>
@@ -136,6 +166,7 @@
                 <div class="file-info"><b>Retray (alpaca9)</b><span>Retray.gdr2</span></div>
                 <a href="Retray.gdr2" download class="btn">Download</a>
             </li>
+            <div id="noResults">No macros match your search.</div>
         </ul>
 
         <section class="request-box" id="request-form">
@@ -151,6 +182,27 @@
             </form>
         </section>
     </main>
+
+    <script>
+        document.getElementById('macroSearch').addEventListener('keyup', function() {
+            let filter = this.value.toLowerCase();
+            let listItems = document.querySelectorAll('#macroList .item');
+            let noResults = document.getElementById('noResults');
+            let found = false;
+
+            listItems.forEach(item => {
+                let text = item.querySelector('b').textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    item.style.display = "flex";
+                    found = true;
+                } else {
+                    item.style.display = "none";
+                }
+            });
+
+            noResults.style.display = found ? "none" : "block";
+        });
+    </script>
 
 </body>
 </html>
