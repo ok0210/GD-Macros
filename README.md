@@ -1,2 +1,2 @@
 # GD-Macros
-A list of gd macros I made.
+A list of downloadable macros that either I or my friends bloliver on gd made.
