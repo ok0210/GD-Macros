@@ -3,78 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GD Macros & Files</title>
+    <title>GD Macro Downloads</title>
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #121212; /* Dark mode for GD vibes */
-            color: white;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: #0a0a0c;
+            color: #e0e0e0;
             display: flex;
             justify-content: center;
-            padding: 40px;
+            padding: 40px 20px;
             margin: 0;
         }
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
         }
-        h1 { text-align: center; color: #4af6ff; }
-        .download-list {
-            background: #1e1e1e;
-            border-radius: 10px;
+        h1 { 
+            text-align: center; 
+            color: #00ffaa; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .macro-list {
+            background: #16161a;
+            border: 1px solid #333;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
         }
         .item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            border-bottom: 1px solid #333;
+            padding: 20px;
+            border-bottom: 1px solid #25252b;
+            transition: background 0.2s;
         }
+        .item:hover { background: #1c1c22; }
         .item:last-child { border-bottom: none; }
-        .file-info b { display: block; color: #fff; }
-        .file-info span { font-size: 0.8rem; color: #888; }
-        .dl-btn {
-            background: #4af6ff;
+        
+        .file-info b { display: block; color: #fff; font-size: 1.1rem; }
+        .file-info span { font-size: 0.75rem; color: #6b6b76; text-transform: uppercase; }
+
+        .actions { display: flex; gap: 10px; }
+
+        .btn {
+            background: #00ffaa;
             color: #000;
             text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 8px 16px;
+            border-radius: 6px;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
         }
-        .dl-btn:hover { background: #38c5cc; }
+        .btn:hover { background: #00cc88; }
+        
+        .btn-secondary {
+            background: #25252b;
+            color: #aaa;
+        }
+        .btn-secondary:hover { background: #32323a; color: #fff; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>My GD Downloads</h1>
-        <div class="download-list">
+        <h1>GD Macros</h1>
+        <div class="macro-list">
             
             <div class="item">
                 <div class="file-info">
-                    <b>Bloodlust_Macro.gmd</b>
-                    <span>GD Macro File</span>
+                    <b>Tidal Wave</b>
+                    <span>tidal wave.gdr2</span>
                 </div>
-                <a href="Bloodlust_Macro.gmd" download class="dl-btn">Download</a>
+                <div class="actions">
+                    <a href="tidal wave.gdr2" download class="btn">Download</a>
+                </div>
             </div>
 
             <div class="item">
                 <div class="file-info">
-                    <b>Cataclysm_Straightfly.json</b>
-                    <span>Mega Hack Macro</span>
+                    <b>Bloodbath</b>
+                    <span>bloodbath.gdr2</span>
                 </div>
-                <a href="Cataclysm_Straightfly.json" download class="dl-btn">Download</a>
+                <div class="actions">
+                    <a href="bloodbath.gdr2" download class="btn">Download</a>
+                </div>
             </div>
 
             <div class="item">
                 <div class="file-info">
-                    <b>Resources.zip</b>
-                    <span>Texture Pack / Sounds</span>
+                    <b>Sakupen Circles</b>
+                    <span>sakupen circles.gdr2</span>
                 </div>
-                <a href="Resources.zip" download class="dl-btn">Download</a>
+                <div class="actions">
+                    <a href="sakupen circles.gdr2" download class="btn">Download</a>
+                </div>
             </div>
 
         </div>
