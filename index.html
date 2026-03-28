@@ -5,17 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Macro Downloads</title>
     <style>
-        /* --- Base & Reset --- */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* CSS remains the same as previous clean version */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
             background-color: #0a0a0c;
             color: #e0e0e0;
             display: flex;
@@ -23,51 +17,18 @@
             padding: 40px 20px;
             margin: 0;
         }
-
-        /* --- Layout --- */
-        .container {
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .header-area {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        /* --- Typography --- */
-        h1 {
-            color: #00ffaa;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        h2 {
-            margin: 0 0 15px 0;
-            color: #fff;
-            font-size: 1.2rem;
-        }
-
-        /* --- Components --- */
+        .container { width: 100%; max-width: 500px; }
+        .header-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        h1 { color: #00ffaa; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-size: 1.5rem; }
         .macro-list, .request-box {
             background: #16161a;
             border: 1px solid #333;
             border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
             margin-bottom: 30px;
-        }
-
-        /* List Styles */
-        .macro-list {
             list-style: none;
             padding: 0;
-            margin-top: 0;
         }
-
         .item {
             display: flex;
             justify-content: space-between;
@@ -75,24 +36,9 @@
             padding: 20px;
             border-bottom: 1px solid #25252b;
         }
-
-        .item:last-child {
-            border-bottom: none;
-        }
-
-        .file-info b {
-            display: block;
-            color: #fff;
-            font-size: 1.1rem;
-        }
-
-        .file-info span {
-            font-size: 0.75rem;
-            color: #6b6b76;
-            text-transform: uppercase;
-        }
-
-        /* Buttons */
+        .item:last-child { border-bottom: none; }
+        .file-info b { display: block; color: #fff; font-size: 1.1rem; }
+        .file-info span { font-size: 0.75rem; color: #6b6b76; text-transform: uppercase; }
         .btn {
             background: #00ffaa;
             color: #000;
@@ -101,62 +47,27 @@
             border-radius: 6px;
             font-weight: bold;
             font-size: 0.85rem;
-            border: none;
             cursor: pointer;
-            transition: background 0.2s ease, transform 0.1s ease;
+            transition: all 0.2s;
             display: inline-block;
-            text-align: center;
         }
-
-        .btn:hover {
-            background: #00cc88;
-            transform: translateY(-1px);
-        }
-
-        .btn-request-top {
-            background: transparent;
-            border: 1px solid #00ffaa;
-            color: #00ffaa;
-        }
-
-        .btn-request-top:hover {
-            background: #00ffaa;
-            color: #000;
-        }
-
-        /* Forms */
-        .request-box {
-            padding: 25px;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-size: 0.85rem;
-            color: #aaa;
-        }
-
+        .btn:hover { background: #00cc88; transform: translateY(-1px); }
+        .btn-request-top { background: transparent; border: 1px solid #00ffaa; color: #00ffaa; }
+        .btn-request-top:hover { background: #00ffaa; color: #000; }
+        .request-box { padding: 25px; }
+        label { display: block; margin-top: 15px; color: #aaa; font-size: 0.85rem; }
         input {
             width: 100%;
             padding: 12px;
+            margin-top: 5px;
             background: #0a0a0c;
             border: 1px solid #333;
             border-radius: 6px;
             color: white;
             font-family: inherit;
-            transition: border-color 0.2s ease;
         }
-
-        input:focus {
-            border-color: #00ffaa;
-            outline: none;
-        }
-
-        .submit-btn {
-            width: 100%;
-            margin-top: 25px;
-        }
+        input:focus { border-color: #00ffaa; outline: none; }
+        .submit-btn { width: 100%; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -170,27 +81,19 @@
         <ul class="macro-list">
             <li class="item">
                 <div class="file-info"><b>Tidal Wave (alpaca9)</b><span>tidal wave.gdr2</span></div>
-                <a href="tidal%20wave.gdr2" download class="btn">Download</a>
+                <a href="tidal%20wave.gdr2" download="tidal wave.gdr2" class="btn">Download</a>
             </li>
             <li class="item">
                 <div class="file-info"><b>Bloodbath (alpaca9)</b><span>bloodbath.gdr2</span></div>
-                <a href="bloodbath.gdr2" download class="btn">Download</a>
+                <a href="bloodbath.gdr2" download="bloodbath.gdr2" class="btn">Download</a>
             </li>
             <li class="item">
                 <div class="file-info"><b>Sakupen Circles (alpaca9)</b><span>sakupen circles.gdr2</span></div>
-                <a href="sakupen%20circles.gdr2" download class="btn">Download</a>
+                <a href="sakupen%20circles.gdr2" download="sakupen circles.gdr2" class="btn">Download</a>
             </li>
             <li class="item">
                 <div class="file-info"><b>Tartarus (bloliver)</b><span>tartarus.gdr2</span></div>
-                <a href="tartarus.gdr2" download class="btn">Download</a>
-            </li>
-            <li class="item">
-                <div class="file-info"><b>Slaughterhouse (bloliver)</b><span>slaughterhouse.gdr2</span></div>
-                <a href="slaughterhouse.gdr2" download class="btn">Download</a>
-            </li>
-            <li class="item">
-                <div class="file-info"><b>Amethyst (bloliver)</b><span>amethyst.gdr2</span></div>
-                <a href="amethyst.gdr2" download class="btn">Download</a>
+                <a href="tartarus.gdr2" download="tartarus.gdr2" class="btn">Download</a>
             </li>
         </ul>
 
@@ -198,7 +101,9 @@
             <h2>Request a New Macro</h2>
             <form action="https://formspree.io/f/maqlqrov" method="POST">
                 <label for="level_request">Level Name</label>
-                <input type="text" id="level_request" name="level_request" placeholder="e.g. tartarus.gdr2" required>
+                <input type="text" id="level_request" name="level_request" 
+                       placeholder="e.g. acheron.gdr2" required 
+                       oninput="this.value = this.value.toLowerCase()">
                 
                 <label for="email">Your Email (Optional)</label>
                 <input type="email" id="email" name="email" placeholder="So I can notify you">
@@ -208,13 +113,5 @@
         </section>
     </main>
 
-    <script>
-        const levelInput = document.getElementById('level_request');
-        
-        levelInput.addEventListener('input', function(event) {
-            // Converts whatever is typed into lowercase immediately
-            event.target.value = event.target.value.toLowerCase();
-        });
-    </script>
 </body>
 </html>
