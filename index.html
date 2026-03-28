@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GD Macro Downloads</title>
+    <title>Macro Downloads</title>
     <style>
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
@@ -23,6 +23,7 @@
             color: #00ffaa; 
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 30px;
         }
         .macro-list {
             background: #16161a;
@@ -45,8 +46,6 @@
         .file-info b { display: block; color: #fff; font-size: 1.1rem; }
         .file-info span { font-size: 0.75rem; color: #6b6b76; text-transform: uppercase; }
 
-        .actions { display: flex; gap: 10px; }
-
         .btn {
             background: #00ffaa;
             color: #000;
@@ -55,22 +54,19 @@
             border-radius: 6px;
             font-weight: bold;
             font-size: 0.85rem;
-            border: none;
-            cursor: pointer;
+            transition: transform 0.1s;
         }
-        .btn:hover { background: #00cc88; }
-        
-        .btn-secondary {
-            background: #25252b;
-            color: #aaa;
+        .btn:hover { 
+            background: #00cc88; 
+            transform: scale(1.05);
         }
-        .btn-secondary:hover { background: #32323a; color: #fff; }
+        .btn:active { transform: scale(0.95); }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>GD Macros</h1>
+        <h1>Macro Downloads</h1>
         <div class="macro-list">
             
             <div class="item">
@@ -78,9 +74,7 @@
                     <b>Tidal Wave</b>
                     <span>tidal wave.gdr2</span>
                 </div>
-                <div class="actions">
-                    <a href="tidal wave.gdr2" download class="btn">Download</a>
-                </div>
+                <a href="tidal wave.gdr2" download class="btn">Download</a>
             </div>
 
             <div class="item">
@@ -88,9 +82,7 @@
                     <b>Bloodbath</b>
                     <span>bloodbath.gdr2</span>
                 </div>
-                <div class="actions">
-                    <a href="bloodbath.gdr2" download class="btn">Download</a>
-                </div>
+                <a href="bloodbath.gdr2" download class="btn">Download</a>
             </div>
 
             <div class="item">
@@ -98,9 +90,7 @@
                     <b>Sakupen Circles</b>
                     <span>sakupen circles.gdr2</span>
                 </div>
-                <div class="actions">
-                    <a href="sakupen circles.gdr2" download class="btn">Download</a>
-                </div>
+                <a href="sakupen circles.gdr2" download class="btn">Download</a>
             </div>
 
         </div>
