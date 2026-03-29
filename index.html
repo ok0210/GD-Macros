@@ -52,6 +52,8 @@
             list-style: none;
             padding: 0;
             margin-bottom: 50px;
+            /* THIS IS THE FIX: Prevents cards from stretching vertically to match neighbors */
+            align-items: start; 
         }
 
         /* --- Card Styling --- */
@@ -59,14 +61,15 @@
             background: #16161a;
             border: 1px solid #2a2a2e;
             border-radius: 14px;
-            padding: 24px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
+            /* Height is now based purely on content */
+            height: auto; 
         }
         
         .item:hover { 
-            transform: translateY(-4px); 
             border-color: #00ffaa; 
             background: #1c1c22;
         }
@@ -75,7 +78,7 @@
         .file-info {
             display: flex;
             flex-direction: column;
-            flex-grow: 1; /* Pushes the button to the bottom */
+            margin-bottom: 15px;
         }
 
         .rank {
@@ -85,38 +88,34 @@
             font-size: 10px;
             font-weight: 800;
             padding: 4px 10px;
-            border-radius: 20px;
-            margin-bottom: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             border: 1px solid rgba(0, 255, 170, 0.2);
-            letter-spacing: 0.5px;
         }
 
         .file-info b {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #fff;
             margin-bottom: 4px;
             display: block;
-            line-height: 1.2;
         }
 
         .creator {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #71717a;
-            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* Note logic: Only takes space if content exists */
         .note {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #a1a1aa;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 10px 12px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px;
             border-radius: 8px;
-            border-left: 3px solid #00ffaa;
-            margin-bottom: 20px;
+            border-left: 2px solid #00ffaa;
+            margin-top: 12px;
             line-height: 1.4;
         }
 
@@ -127,21 +126,19 @@
             color: #000;
             text-align: center;
             text-decoration: none;
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
             font-weight: 700;
-            font-size: 0.9rem;
-            transition: background 0.2s, transform 0.1s;
-            margin-top: auto; /* Keeps buttons aligned at bottom of card */
+            font-size: 0.85rem;
+            transition: background 0.2s;
         }
         .btn:hover { background: #05e69b; }
-        .btn:active { transform: scale(0.98); }
 
         .btn-request-top {
             background: transparent;
             border: 1px solid #00ffaa;
             color: #00ffaa;
-            padding: 10px 18px;
+            padding: 8px 16px;
             font-size: 0.8rem;
         }
 
@@ -152,7 +149,6 @@
             border-radius: 14px; 
             border: 1px solid #2a2a2e; 
         }
-        .request-box h2 { margin-top: 0; color: #fff; }
         label { display: block; margin: 15px 0 5px 0; font-size: 0.85rem; color: #aaa; }
         input { 
             width: 100%; 
@@ -163,7 +159,6 @@
             color: white; 
             outline: none;
         }
-        input:focus { border-color: #00ffaa; }
         .submit-btn { width: 100%; margin-top: 25px; cursor: pointer; border: none; }
 
         #noResults { grid-column: 1 / -1; display: none; text-align: center; color: #52525b; padding: 40px; }
@@ -183,138 +178,72 @@
 
         <ul class="macro-list" id="macroList">
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">#2</span>
-                    <b>Flamewall</b>
-                    <span class="creator">alpaca9</span>
-                </div>
+                <div class="file-info"><span class="rank">#2</span><b>Flamewall</b><span class="creator">alpaca9</span></div>
                 <a href="Flamewall.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">#3</span>
-                    <b>Amethyst</b>
-                    <span class="creator">bloliver</span>
-                </div>
+                <div class="file-info"><span class="rank">#3</span><b>Amethyst</b><span class="creator">bloliver</span></div>
                 <a href="Amethyst.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">#4</span>
-                    <b>Tidal Wave</b>
-                    <span class="creator">alpaca9</span>
-                </div>
+                <div class="file-info"><span class="rank">#4</span><b>Tidal Wave</b><span class="creator">alpaca9</span></div>
                 <a href="Tidal%20Wave.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
                 <div class="file-info">
-                    <span class="rank">#6</span>
-                    <b>Nullscapes</b>
-                    <span class="creator">alpaca9</span>
-                    <span class="note">Note: You need to die or restart 10 times within the level.</span>
+                    <span class="rank">#6</span><b>Nullscapes</b><span class="creator">alpaca9</span>
+                    <div class="note">Note: You need to die or restart 10 times within the level.</div>
                 </div>
                 <a href="Nullscapes.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
                 <div class="file-info">
-                    <span class="rank">#8</span>
-                    <b>BOOBAWAMBA</b>
-                    <span class="creator">alpaca9</span>
-                    <span class="note">Note: Use seed 12</span>
+                    <span class="rank">#8</span><b>BOOBAWAMBA</b><span class="creator">alpaca9</span>
+                    <div class="note">Note: Use seed 12</div>
                 </div>
                 <a href="BOOBAWAMBA.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">#16</span>
-                    <b>Acheron</b>
-                    <span class="creator">alpaca9</span>
-                </div>
+                <div class="file-info"><span class="rank">#16</span><b>Acheron</b><span class="creator">alpaca9</span></div>
                 <a href="Acheron.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">#24</span>
-                    <b>Slaughterhouse</b>
-                    <span class="creator">bloliver</span>
-                </div>
+                <div class="file-info"><span class="rank">#24</span><b>Slaughterhouse</b><span class="creator">bloliver</span></div>
                 <a href="Slaughterhouse.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">#1002 on ILL</span>
-                    <b>Sakupen Circles (Unnerfed)</b>
-                    <span class="creator">alpaca9</span>
-                </div>
+                <div class="file-info"><span class="rank">#1002 on ILL</span><b>Sakupen Circles (Unnerfed)</b><span class="creator">alpaca9</span></div>
                 <a href="Sakupen%20Circles.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">#51</span>
-                    <b>Limbo</b>
-                    <span class="creator">bloliver</span>
-                </div>
+                <div class="file-info"><span class="rank">#51</span><b>Limbo</b><span class="creator">bloliver</span></div>
                 <a href="LIMBO.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">#77</span>
-                    <b>Tartarus</b>
-                    <span class="creator">bloliver</span>
-                </div>
+                <div class="file-info"><span class="rank">#77</span><b>Tartarus</b><span class="creator">bloliver</span></div>
                 <a href="Tartarus.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">LEGACY</span>
-                    <b>Bloodlust</b>
-                    <span class="creator">alpaca9</span>
-                </div>
+                <div class="file-info"><span class="rank">LEGACY</span><b>Bloodlust</b><span class="creator">alpaca9</span></div>
                 <a href="Bloodlust.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">LEGACY</span>
-                    <b>Bloodbath</b>
-                    <span class="creator">alpaca9</span>
-                </div>
+                <div class="file-info"><span class="rank">LEGACY</span><b>Bloodbath</b><span class="creator">alpaca9</span></div>
                 <a href="Bloodbath.gdr2" download class="btn">Download</a>
             </li>
-            
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">EASY</span>
-                    <b>Back On Track</b>
-                    <span class="creator">alpaca9</span>
-                </div>
+                <div class="file-info"><span class="rank">EASY</span><b>Back On Track</b><span class="creator">alpaca9</span></div>
                 <a href="Back On Track.gdr2" download class="btn">Download</a>
             </li>
-
             <li class="item">
-                <div class="file-info">
-                    <span class="rank">EASY</span>
-                    <b>Retray</b>
-                    <span class="creator">alpaca9</span>
-                </div>
+                <div class="file-info"><span class="rank">EASY</span><b>Retray</b><span class="creator">alpaca9</span></div>
                 <a href="Retray.gdr2" download class="btn">Download</a>
             </li>
-
             <div id="noResults">No levels or creators match your search.</div>
         </ul>
 
         <section class="request-box" id="request-form">
-            <h2>Request a New Macro</h2>
+            <h2 style="margin-top:0">Request a New Macro</h2>
             <form action="https://formspree.io/f/maqlqrov" method="POST">
                 <label for="level_request">Level Name</label>
                 <input type="text" id="level_request" name="level_request" placeholder="e.g. Thinking Space II" required>
@@ -331,7 +260,6 @@
             let listItems = document.querySelectorAll('#macroList .item');
             let noResults = document.getElementById('noResults');
             let found = false;
-
             listItems.forEach(item => {
                 let text = item.innerText.toLowerCase();
                 if (text.includes(filter)) {
