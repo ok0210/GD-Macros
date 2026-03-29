@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Macro Downloads</title>
+    <title>Macro Repository</title>
     <style>
         /* --- Base & Reset --- */
         *, *::before, *::after { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-color: #0a0a0c;
             color: #e0e0e0;
             display: flex;
@@ -18,134 +18,155 @@
             margin: 0;
         }
 
-        /* --- Layout --- */
         .container { width: 100%; max-width: 1800px; }
+        
+        /* --- Header --- */
         .header-area { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            margin-bottom: 20px; 
+            margin-bottom: 24px; 
         }
+        h1 { color: #00ffaa; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-size: 1.5rem; }
 
         /* --- Search Bar --- */
-        .search-container { margin-bottom: 25px; }
+        .search-container { margin-bottom: 30px; }
         #macroSearch {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 18px;
             background: #16161a;
             border: 1px solid #333;
-            border-radius: 8px;
+            border-radius: 10px;
             color: white;
             font-family: inherit;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
         }
-        #macroSearch:focus { border-color: #00ffaa; }
-
-        h1 { color: #00ffaa; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-size: 1.5rem; }
-        h2 { margin: 0 0 15px 0; color: #fff; font-size: 1.2rem; }
+        #macroSearch:focus { border-color: #00ffaa; box-shadow: 0 0 0 1px #00ffaa; }
 
         /* --- Grid Layout --- */
         .macro-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             list-style: none;
             padding: 0;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
+        /* --- Card Styling --- */
         .item {
             background: #16161a;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 20px;
+            border: 1px solid #2a2a2e;
+            border-radius: 14px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-        .item:hover { transform: translateY(-5px); border-color: #00ffaa; }
-
-        /* --- Descriptions --- */
-        .file-info { 
-            margin-bottom: 18px; 
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            transition: all 0.25s ease;
         }
         
-        .file-info .rank { 
-            background: rgba(0, 255, 170, 0.1); 
+        .item:hover { 
+            transform: translateY(-4px); 
+            border-color: #00ffaa; 
+            background: #1c1c22;
+        }
+
+        /* --- Card Content --- */
+        .file-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Pushes the button to the bottom */
+        }
+
+        .rank {
+            align-self: flex-start;
+            background: rgba(0, 255, 170, 0.1);
+            color: #00ffaa;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
             border: 1px solid rgba(0, 255, 170, 0.2);
-            color: #00ffaa; 
-            font-weight: 700; 
-            font-size: 0.7rem; 
-            margin-bottom: 8px; 
-            padding: 4px 8px; 
-            border-radius: 6px;
             letter-spacing: 0.5px;
-            display: inline-block;
-        }
-        
-        .file-info b { 
-            display: block; 
-            color: #ffffff; 
-            font-size: 0.95rem; 
-            font-weight: 600;
-            margin-bottom: 4px; 
-            letter-spacing: 0.2px;
-            line-height: 1.3;
-        }
-        
-        .file-info .creator { 
-            font-size: 0.7rem; 
-            color: #8a8a99; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            font-weight: 500;
         }
 
-        .file-info .note {
+        .file-info b {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 4px;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .creator {
             font-size: 0.75rem;
-            color: #b0b0c0;
-            margin-top: 8px;
-            line-height: 1.4;
+            color: #71717a;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Note logic: Only takes space if content exists */
+        .note {
+            font-size: 0.8rem;
+            color: #a1a1aa;
             background: rgba(255, 255, 255, 0.03);
-            padding: 6px;
-            border-radius: 4px;
-            border-left: 2px solid #555;
-            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border-left: 3px solid #00ffaa;
+            margin-bottom: 20px;
+            line-height: 1.4;
         }
 
         /* --- Buttons --- */
         .btn {
+            display: block;
             background: #00ffaa;
             color: #000;
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 0.8rem;
             text-align: center;
-            transition: background 0.2s;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.1s;
+            margin-top: auto; /* Keeps buttons aligned at bottom of card */
         }
-        .btn:hover { background: #00cc88; }
-        
+        .btn:hover { background: #05e69b; }
+        .btn:active { transform: scale(0.98); }
+
         .btn-request-top {
             background: transparent;
             border: 1px solid #00ffaa;
             color: #00ffaa;
-            padding: 10px 20px;
+            padding: 10px 18px;
+            font-size: 0.8rem;
         }
 
-        /* --- Forms --- */
-        .request-box { background: #16161a; border: 1px solid #333; border-radius: 12px; padding: 25px; }
+        /* --- Request Form --- */
+        .request-box { 
+            background: #16161a; 
+            padding: 30px; 
+            border-radius: 14px; 
+            border: 1px solid #2a2a2e; 
+        }
+        .request-box h2 { margin-top: 0; color: #fff; }
         label { display: block; margin: 15px 0 5px 0; font-size: 0.85rem; color: #aaa; }
-        input { width: 100%; padding: 12px; background: #0a0a0c; border: 1px solid #333; border-radius: 6px; color: white; }
+        input { 
+            width: 100%; 
+            padding: 12px; 
+            background: #0a0a0c; 
+            border: 1px solid #333; 
+            border-radius: 8px; 
+            color: white; 
+            outline: none;
+        }
+        input:focus { border-color: #00ffaa; }
         .submit-btn { width: 100%; margin-top: 25px; cursor: pointer; border: none; }
 
-        #noResults { grid-column: 1 / -1; display: none; padding: 20px; text-align: center; color: #6b6b76; }
+        #noResults { grid-column: 1 / -1; display: none; text-align: center; color: #52525b; padding: 40px; }
     </style>
 </head>
 <body>
@@ -162,18 +183,32 @@
 
         <ul class="macro-list" id="macroList">
             <li class="item">
-                <div class="file-info"><span class="rank">#2</span><b>Flamewall</b><span class="creator">alpaca9</span></div>
+                <div class="file-info">
+                    <span class="rank">#2</span>
+                    <b>Flamewall</b>
+                    <span class="creator">alpaca9</span>
+                </div>
                 <a href="Flamewall.gdr2" download class="btn">Download</a>
             </li>
+
             <li class="item">
-                <div class="file-info"><span class="rank">#3</span><b>Amethyst</b><span class="creator">bloliver</span></div>
+                <div class="file-info">
+                    <span class="rank">#3</span>
+                    <b>Amethyst</b>
+                    <span class="creator">bloliver</span>
+                </div>
                 <a href="Amethyst.gdr2" download class="btn">Download</a>
             </li>
 
             <li class="item">
-                <div class="file-info"><span class="rank">#4</span><b>Tidal Wave</b><span class="creator">alpaca9</span></div>
+                <div class="file-info">
+                    <span class="rank">#4</span>
+                    <b>Tidal Wave</b>
+                    <span class="creator">alpaca9</span>
+                </div>
                 <a href="Tidal%20Wave.gdr2" download class="btn">Download</a>
             </li>
+
             <li class="item">
                 <div class="file-info">
                     <span class="rank">#6</span>
@@ -183,6 +218,7 @@
                 </div>
                 <a href="Nullscapes.gdr2" download class="btn">Download</a>
             </li>
+
             <li class="item">
                 <div class="file-info">
                     <span class="rank">#8</span>
@@ -194,46 +230,83 @@
             </li>
 
             <li class="item">
-                <div class="file-info"><span class="rank">#16</span><b>Acheron</b><span class="creator">alpaca9</span></div>
+                <div class="file-info">
+                    <span class="rank">#16</span>
+                    <b>Acheron</b>
+                    <span class="creator">alpaca9</span>
+                </div>
                 <a href="Acheron.gdr2" download class="btn">Download</a>
             </li>
 
             <li class="item">
-                <div class="file-info"><span class="rank">#24</span><b>Slaughterhouse</b><span class="creator">bloliver</span></div>
+                <div class="file-info">
+                    <span class="rank">#24</span>
+                    <b>Slaughterhouse</b>
+                    <span class="creator">bloliver</span>
+                </div>
                 <a href="Slaughterhouse.gdr2" download class="btn">Download</a>
             </li>
 
             <li class="item">
-                <div class="file-info"><span class="rank">#1002 on ILL</span><b>Sakupen Circles (Unnerfed)</b><span class="creator">alpaca9</span></div>
+                <div class="file-info">
+                    <span class="rank">#1002 on ILL</span>
+                    <b>Sakupen Circles (Unnerfed)</b>
+                    <span class="creator">alpaca9</span>
+                </div>
                 <a href="Sakupen%20Circles.gdr2" download class="btn">Download</a>
             </li>
+
             <li class="item">
-                <div class="file-info"><span class="rank">#51</span><b>Limbo</b><span class="creator">bloliver</span></div>
+                <div class="file-info">
+                    <span class="rank">#51</span>
+                    <b>Limbo</b>
+                    <span class="creator">bloliver</span>
+                </div>
                 <a href="LIMBO.gdr2" download class="btn">Download</a>
             </li>
 
             <li class="item">
-                <div class="file-info"><span class="rank">#77</span><b>Tartarus</b><span class="creator">bloliver</span></div>
+                <div class="file-info">
+                    <span class="rank">#77</span>
+                    <b>Tartarus</b>
+                    <span class="creator">bloliver</span>
+                </div>
                 <a href="Tartarus.gdr2" download class="btn">Download</a>
             </li>
 
             <li class="item">
-                <div class="file-info"><span class="rank">LEGACY</span><b>Bloodlust</b><span class="creator">alpaca9</span></div>
+                <div class="file-info">
+                    <span class="rank">LEGACY</span>
+                    <b>Bloodlust</b>
+                    <span class="creator">alpaca9</span>
+                </div>
                 <a href="Bloodlust.gdr2" download class="btn">Download</a>
             </li>
 
             <li class="item">
-                <div class="file-info"><span class="rank">LEGACY</span><b>Bloodbath</b><span class="creator">alpaca9</span></div>
+                <div class="file-info">
+                    <span class="rank">LEGACY</span>
+                    <b>Bloodbath</b>
+                    <span class="creator">alpaca9</span>
+                </div>
                 <a href="Bloodbath.gdr2" download class="btn">Download</a>
             </li>
             
             <li class="item">
-                <div class="file-info"><span class="rank">EASY</span><b>Back On Track</b><span class="creator">alpaca9</span></div>
+                <div class="file-info">
+                    <span class="rank">EASY</span>
+                    <b>Back On Track</b>
+                    <span class="creator">alpaca9</span>
+                </div>
                 <a href="Back On Track.gdr2" download class="btn">Download</a>
             </li>
 
             <li class="item">
-                <div class="file-info"><span class="rank">EASY</span><b>Retray</b><span class="creator">alpaca9</span></div>
+                <div class="file-info">
+                    <span class="rank">EASY</span>
+                    <b>Retray</b>
+                    <span class="creator">alpaca9</span>
+                </div>
                 <a href="Retray.gdr2" download class="btn">Download</a>
             </li>
 
